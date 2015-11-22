@@ -20,7 +20,7 @@ class LoginActions{
         })
         .done((data)=>{
            // alert('login successfull');
-             this.actions.loginSuccess(data);
+             this.actions.loginSuccess(data.user);
         })
         .fail((jqXhr) => {
             var errorMessage = jqXhr.responseJSON.message;

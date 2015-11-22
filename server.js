@@ -12,12 +12,8 @@ var routes = require('./app/routes');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-
-
-
 var departments = require('./server/departments');
-var nova = require('./server/nova');
-var glance = require('./server/glance');
+
 var User = require('./models/user');
 //require("babel-core/register");
 
@@ -51,9 +47,14 @@ passport.deserializeUser(User.deserializeUser());
 //app.post('/saveVirtualMachines',virtualMachine.saveVirtualMachine);
 app.get('/departments',departments.findAll);
 app.post('/save',departments.save);
-app.get('/servers',nova.findAllServers);
-app.get('/flavors',nova.findAllFlavors);
-app.get('/images',glance.findAllImages);
+app.get('/getUser',function(req,res,next){
+    if(req.user){
+        res.status(200).send({user:req.user})
+    }else{
+        res.status(401).send({message:'No Session Found'})
+    }
+})
+
 
 
 app.post('/register', function(req, res, next) {

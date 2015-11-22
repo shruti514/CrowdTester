@@ -10,10 +10,12 @@ class LoginStore {
         this.isAuthenticated=false;
         this.isError = false;
         this.errorMessage = '';
+        this.user={}
     }
 
-    onLoginSuccess(data){
+    onLoginSuccess(user){
         this.isAuthenticated = true;
+        this.user = user
     }
 
 
