@@ -7,12 +7,11 @@ var React = require('react');
 var ReactDOM = require('react-dom/server');
 var Router = require('react-router');
 var RoutingContext = Router.RoutingContext;
-var session = require('cookie-session');
 var routes = require('./app/routes');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var departments = require('./server/departments');
+var testers = require('./server/testers');
 
 var User = require('./models/user');
 //require("babel-core/register");
@@ -25,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/assets',express.static(path.join(__dirname, '/assets')));
 
-mongoose.connect('mongodb://localhost/CMPE283',function(err){
+mongoose.connect('mongodb://localhost/CMPE281',function(err){
     console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
@@ -44,9 +43,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//app.post('/saveVirtualMachines',virtualMachine.saveVirtualMachine);
-app.get('/departments',departments.findAll);
-app.post('/save',departments.save);
+
+app.post('/testers',testers.save);
+app.get('/testers',testers.findAll);
+
+
 app.get('/getUser',function(req,res,next){
     if(req.user){
         res.status(200).send({user:req.user})

@@ -24,6 +24,7 @@
     "history": "^1.12.5",
     "jquery": "^2.1.4",
     "mongoose": "^4.2.4",
+    "mongoose-timestamp": "^0.4.0",
     "morgan": "^1.6.1",
     "node-inspector": "^0.12.3",
     "openclient": "^1.7.10",

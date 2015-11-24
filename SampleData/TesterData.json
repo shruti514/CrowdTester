@@ -1,0 +1,35 @@
+{
+    "username": "tester123",
+    "firstName": "Bob",
+    "lastName": "Baxter",
+    "avatarUrl": "https://www.hydrogenaud.io/forums/uploads/profile/photo-119400.jpg",
+    "email": "bob.baxter@gmail.com",
+    "isActive": true,
+    "age": 30,
+    "designation": "Tester",
+    "yearsOfExperience": 10,
+    "skills": {
+        "tools": [],
+        "programmingLanguages": [
+            "js"
+        ],
+        "testingSkills": [
+            "Selenium",
+            "functional",
+            "ux"
+        ],
+        "bugReportingTools": [
+            "bugZilla"
+        ]
+    },
+    "availability": {
+        "dates": {
+            "startDate": "2012-07-14T01:00:00+01:00",
+            "endDate": "2012-07-14T01:00:00+01:00"
+        },
+        "time": {
+            "startTime": "2012-07-14T01:00:00+01:00",
+            "endTime": "2012-07-14T01:00:00+01:00"
+        }
+    }
+}
