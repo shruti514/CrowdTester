@@ -19,6 +19,8 @@ var appproviders = require('./server/appProvider');
 var bugreports = require('./server/bugReport');
 
 var User = require('./models/user');
+var Tester = require('./models/tester');
+var AppProvider = require('./models/AppProvider');
 //require("babel-core/register");
 
 var app = express();
@@ -29,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/assets',express.static(path.join(__dirname, '/assets')));
 
-mongoose.connect('mongodb://localhost/CMPE283',function(err){
+mongoose.connect('mongodb://localhost/CMPE281',function(err){
     console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
@@ -81,10 +83,14 @@ app.get('/getUser',function(req,res,next){
 
 
 
-app.post('/register', function(req, res, next) {
-    console.log('registering user');
+app.post('/registerTester', function(req, res, next) {
+    console.log('registering Tester');
+    var user = new User({
+        username: req.param('username'),
+        roles:["ROLE_TESTER"]
+    });
 
-    User.register(new User({username: req.param('username')}), req.param('password'), function(err,user) {
+    User.register(user, req.param('password'), function(err,user) {
         if (err) {
             console.log('error while user register!', err);
             return res.status(500).send({message:'Error occurred during registration'+JSON.stringify(err)});
@@ -92,9 +98,47 @@ app.post('/register', function(req, res, next) {
 
         console.log('user registered!');
 
-        res.status(200).send({message:'User successfully registered.'});
+        var tester = new Tester(req.body);
+
+        tester.save(function (err) {
+            if (err) {
+                console.log('Error saving data.');
+                res.status(500).send(err);
+            }
+            res.status(200).send({message:'Tester successfully registered.'});
+        })
+
     });
 });
+
+app.post('/registerProvider', function(req, res, next) {
+    console.log('registering Tester');
+    var user = new User({
+        username: req.param('username'),
+        roles:["ROLE_PROVIDER"]
+    });
+
+    User.register(user, req.param('password'), function(err,user) {
+        if (err) {
+            console.log('error while user register!', err);
+            return res.status(500).send({message:'Error occurred during registration'+JSON.stringify(err)});
+        }
+
+        console.log('user registered!');
+
+        var provider = new AppProvider(req.body);
+
+        provider.save(function (err) {
+            if (err) {
+                console.log('Error saving data.');
+                res.status(500).send(err);
+            }
+            res.status(200).send({message:'Provider successfully registered.'});
+        })
+
+    });
+});
+
 
 
 app.post('/login',function(req,res,next){

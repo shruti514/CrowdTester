@@ -5,9 +5,8 @@ class RegisterProvider extends React.Component {
 
     render() {
         return (
-            <div className="top-content">
 
-                <div className="inner-bg">
+                <div className="inner-bg top-content">
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-8 col-sm-offset-2 text">
@@ -257,7 +256,6 @@ class RegisterProvider extends React.Component {
                     </div>
                 </div>
 
-            </div>
         );
     }
 }

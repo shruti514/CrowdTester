@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Crowd Tester</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="manager_dashboard.html">Crowd Tester</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="manager_profile.html"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="manager_dashboard.html"><i class="fa fa-fw fa-dashboard"></i>&nbsp;Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <a href="project_setup.html"><i class="fa fa-fw fa-bars"></i>&nbsp;Project Setup</a>
+                    </li>                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Project Setup
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Project Setup Details</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form role="form" action="" method="post">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Provider Name</p>
+                                            </div>
+                                            <div class="col-xs-5 form-group">
+                                                <label class="sr-only" for="form-providername">provider-name</label>
+                                                <input type="text" placeholder="Provider Name..." class="form-control" id="form-provider-name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Project Name</p>
+                                            </div>
+                                            <div class="col-xs-5 form-group">
+                                                <label class="sr-only" for="form-projectname">project-name</label>
+                                                <input type="text" placeholder="Project Name..." class="form-control" id="form-project-name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Platforms</p>
+                                            </div>
+                                            <div class="col-xs-6 form-group">
+                                                <select class="selectpicker" multiple="multiple">
+                                                    <option>Android</option>
+                                                    <option>iOS</option>
+                                                    <option>Windows</option>
+                                                    <option>BlackBerry</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Devices</p>
+                                            </div>
+                                            <div class="col-xs-6 form-group">
+                                                <select class="selectpicker" multiple="multiple">
+                                                    <option>iPhone</option>
+                                                    <option>Samsung</option>
+                                                    <option>Nexus</option>
+                                                    <option>BlackBerry</option>
+                                                    <option>WindowsPhone</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Browsers</p>
+                                            </div>
+                                            <div class="col-xs-6 form-group">
+                                                <select class="selectpicker" multiple="multiple">
+                                                    <option>Chrome</option>
+                                                    <option>Safari</option>
+                                                    <option>Firefox</option>
+                                                    <option>IE</option>
+                                                    <option>Opera</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Testing Type</p>
+                                            </div>
+                                            <div class="col-xs-6 form-group">
+                                                <select class="selectpicker" multiple="multiple">
+                                                    <option>Functional</option>
+                                                    <option>Usability</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Number of Testers</p>
+                                            </div>
+                                            <div class="col-xs-5 form-group">
+                                                <label class="sr-only" for="form-testerscount">testers-count</label>
+                                                <input type="text" placeholder="Number of Testers..." class="form-control" id="form-testers-count">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Base Hourly Rate</p>
+                                            </div>
+                                            <div class="col-xs-5 form-group">
+                                                <label class="sr-only" for="form-base-hourlyrate">hourly-rate</label>
+                                                <input type="text" placeholder="Base Hourly Rate..." class="form-control" id="form-hourly-rate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3 col-xs-offset-1 form-group">
+                                            <h4 class="pull-right"><strong>Duration</strong></h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Start Date</p>
+                                            </div>
+                                            <div class="col-xs-5 form-group">
+                                                <label class="sr-only" for="form-startdate">start-date</label>
+                                                <input type="text" placeholder="MM-dd-yyyy" class="form-control" id="form-start-date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">End Date</p>
+                                            </div>
+                                            <div class="col-xs-5 form-group">
+                                                <label class="sr-only" for="form-enddate">end-date</label>
+                                                <input type="text" placeholder="MM-dd-yyyy" class="form-control" id="form-end-date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3 col-xs-offset-1 form-group">
+                                            <h4 class="pull-right"><strong>Select Testers</strong></h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-xs-3 col-xs-offset-1 form-group">
+                                                <p class="pull-right">Testers</p>
+                                            </div>
+                                            <div class="col-xs-6 form-group">
+                                                <select class="selectpicker" multiple="multiple">
+                                                    <option>Alex Smith</option>
+                                                    <option>John Doe</option>
+                                                    <option>Jane Doe</option>
+                                                    <option>John Smith</option>
+                                                    <option>Jane Smith</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-offset-4 text">
+                                            <div class="description">
+                                                 <button type="button" class="btn btn-primary">Create</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- /.row -->
+
+        </div>
+            <!-- /.container-fluid -->
+
+    </div>
+        <!-- /#page-wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="js/plugins/flot/flot-data.js"></script>
+
+</body>
+
+</html>
