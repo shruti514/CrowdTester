@@ -12,11 +12,11 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var testers = require('./server/testers');
-var payments = require('./server/payments');
-var systemconfigs = require('./server/systemConfig');
-var incentives = require('./server/incentives');
-var appproviders = require('./server/appProvider');
-var bugreports = require('./server/bugReport');
+var payments = require('./server/Payments');
+var systemconfigs = require('./server/SystemConfig');
+var incentives = require('./server/Incentives');
+var appproviders = require('./server/AppProvider');
+var bugreports = require('./server/BugReport');
 
 var User = require('./models/user');
 var Tester = require('./models/tester');

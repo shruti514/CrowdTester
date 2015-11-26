@@ -1,7 +1,7 @@
 var React = require('react');
 var LoginStore = require('../stores/LoginStore');
 var LoginAction = require('../actions/LoginActions');
-var Home = require('./home');
+var Home = require('./Home');
 var {Link} = require('react-router');
 
 class Login extends React.Component {
