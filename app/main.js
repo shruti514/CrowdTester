@@ -1,10 +1,10 @@
 import React from 'react';
 import Router from 'react-router';
 import ReactDOM from 'react-dom';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import createMemoryHistory from 'history/lib/createMemoryHistory'
 import routes from './routes';
 
 
-let history = createBrowserHistory();
+let history = createMemoryHistory();
 
-ReactDOM.render(<Router history={history}>{routes}</Router>, document.getElementById('app'));
+ReactDOM.render(<Router >{routes}</Router>, document.getElementById('app'));

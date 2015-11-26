@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/assets',express.static(path.join(__dirname, '/assets')));
 
-mongoose.connect('mongodb://localhost/CMPE281',function(err){
+mongoose.connect('mongodb://localhost/CMPE283',function(err){
     console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
