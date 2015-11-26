@@ -3,7 +3,7 @@ var React = require('react');
 var HomeActions = require('../actions/HomeActions');
 var HomeStore = require('../stores/HomeStore');
 var Login = require('./Login');
-var SignUp = require('./SignUp');
+
 
 class Home extends React.Component {
 

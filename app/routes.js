@@ -4,7 +4,6 @@ import App from './components/App';
 import Home from './components/Home';
 import CreateVM from './components/CreateVM';
 import Login from './components/Login';
-import SignUp from './components/SignUp';
 import RegisterTester from './components/RegisterTester';
 import RegisterProvider from './components/RegisterProvider';
 
@@ -14,7 +13,6 @@ export default (
     <Route path='/' component={Home} />
     <Route path='/create' component={CreateVM} />
     <Route path='/login' component={Login}/>
-    <Route path='/signup' component={SignUp}/>
     <Route path='/registerTester' component={RegisterTester}/>
     <Route path='/registerProvider' component={RegisterProvider}/>
   </Route>
