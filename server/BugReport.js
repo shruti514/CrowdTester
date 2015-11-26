@@ -1,4 +1,4 @@
-var BugsReport = require('../models/bugReport');
+var BugsReport = require('../models/BugReport');
 
 
 var findAll = (req,res,next) =>{
