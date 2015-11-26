@@ -1,0 +1,15 @@
+{
+  "testingType": "System",
+  "priority":"Topmost",
+  "severity":"moderate",
+  "assignedTo":"John",
+  "environmentDetails":{
+    "platform":"Java",
+    "browser":"MozillaFirefox",
+    "device":"Samsung Galaxy Tab",
+    "operatingSystem":"Android"
+  },
+  "otherDetails":"None"
+
+
+}

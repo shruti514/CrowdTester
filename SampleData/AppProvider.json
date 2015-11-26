@@ -1,0 +1,23 @@
+{
+  "username": "John",
+  "firstName":"Henry",
+  "lastName":"Kennedy",
+  "address":{
+    "street":"Santana Row",
+    "unitNumber":"Eight",
+    "city":"San Jose",
+    "state":"California",
+    "country":"USA",
+    "postalCode":"56009"
+  },
+  "contactNumber": "512-264-8977",
+  "alternateContactNumber":"345-897-5648",
+  "creditPoints":"750",
+  "designation":"Project Manager",
+  "yearsOfExperience":"13",
+  "billingDetails":{
+    "paypal":{"email":"john@umail.com","phoneNumber":"234-568-4521"}
+  }
+
+
+}

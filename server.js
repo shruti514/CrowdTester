@@ -12,6 +12,11 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var testers = require('./server/testers');
+var payments = require('./server/payments');
+var systemconfigs = require('./server/systemConfig');
+var incentives = require('./server/incentives');
+var appproviders = require('./server/appProvider');
+var bugreports = require('./server/bugReport');
 
 var User = require('./models/user');
 //require("babel-core/register");
@@ -46,6 +51,24 @@ passport.deserializeUser(User.deserializeUser());
 
 app.post('/testers',testers.save);
 app.get('/testers',testers.findAll);
+
+/*app.post('/user',user.save);
+app.get('/user',user.findAll);*/
+
+app.post('/payments',payments.save);
+app.get('/payments',payments.findAll);
+
+app.post('/systemConfigs',systemconfigs.save);
+app.get('/systemConfigs',systemconfigs.findAll);
+
+app.post('/incentives',incentives.save);
+app.get('/incentives',incentives.findAll);
+
+app.post('/appProviders',appproviders.save);
+app.get('/appProviders',appproviders.findAll);
+
+app.post('/bugReports',bugreports.save);
+app.get('/bugReports',bugreports.findAll);
 
 
 app.get('/getUser',function(req,res,next){

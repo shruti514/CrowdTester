@@ -1,0 +1,29 @@
+{
+  "baseHourlyRate": "10",
+  "saasFee":"1200",
+  "creditPoints":{
+    "priority1":"3",
+    "priority2":"1",
+    "priority3":"3"
+  },
+  "incentives":[{
+    "level":"2",
+    "name":"Prioritybug",
+    "applicablePercentage":"10",
+    "bonusPercentage":"5"
+  }],
+  "scheduledTasks":[
+    {
+      "jobName":"IntegrationTesting",
+      "executionNumber":"3",
+      "lastSuccessfulRun":"11/30/2015",
+      "nextScheduledRun":"12/04/2015"
+    },
+    {
+      "jobName":"FunctionalTesting",
+      "executionNumber":"2",
+      "lastSuccessfulRun":"11/18/2015",
+      "nextScheduledRun":"11/30/2015"
+    }]
+
+}
