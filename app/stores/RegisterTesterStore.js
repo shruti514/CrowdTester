@@ -9,9 +9,27 @@ class RegisterTesterStore {
         this.password='';
         this.firstName='';
         this.lastName='';
+        this.avatarUrl='';
         this.confirmPassword='';
         this.emailId='';
         this.phoneNumber='';
+        this.contactNumber='';
+        this.alternateContactNumber='';
+        this.age='';
+        this.designation='';
+        this.yearsOfExperience='';
+        this.tools=[];
+        this.programmingLanguages = [];
+        this.testingSkills = [];
+        this.bugReportingTools = [];
+        this.startDate = '';
+        this.endDate = '';
+        this.startTime = '';
+        this.endTime = '';
+        this.notAvailableStartDate = '';
+        this.notAvailableEndDate = '';
+        this.billingEmail = '';
+        this.billingPhone = '';
         this.timeZone='';
         this.platform=[];
         this.testingType=[];
@@ -19,7 +37,6 @@ class RegisterTesterStore {
         this.isError = false;
         this.errorMessage = '';
         this.successMessage='';
-
     }
 
 
