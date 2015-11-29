@@ -8,20 +8,19 @@ class LoginStore {
         this.username='';
         this.password='';
         this.isAuthenticated=false;
-        this.isError = false;
-        this.errorMessage = '';
+        this.errorMessage = null;
         this.user={}
     }
 
     onLoginSuccess(user){
         this.isAuthenticated = true;
+        this.errorMessage=null;
         this.user = user
     }
 
 
     onLoginFail(errorMessage){
         console.log('Unable to login.Please try again.')
-        this.isError = true;
         this.errorMessage = errorMessage;
     }
 

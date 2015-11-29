@@ -1,5 +1,6 @@
 
 var mongoose = require('mongoose');
+var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
 var Tester = new mongoose.Schema({
@@ -12,11 +13,14 @@ var Tester = new mongoose.Schema({
     age:Number,
     designation:String,
     yearsOfExperience:Number,
+    contactNumber:String,
+    alternateContactNumber:String,
     skills:{
         tools:[String],
         programmingLanguages:[String],
         testingSkills:[String],
-        bugReportingTools:[String]
+        bugReportingTools:[String],
+        platforms:[String]
     },
     availability:{
         dates:{
@@ -24,10 +28,30 @@ var Tester = new mongoose.Schema({
             endDate:Date
         },
         time:{
-            startTime:Date,
-            endTime:Date
+            startTime:String,
+            endTime:String
         }
-    }
+    },
+    notAvailability:{
+        dates:{
+            startDate:Date,
+            endDate:Date
+        }
+    },
+    activeProjects:[{
+        projectId:Schema.Types.ObjectId,
+        projectName:String
+    }],
+    projects:[{
+        projectId:Schema.Types.ObjectId,
+        projectName:String
+    }],
+    creditPoints:Number,
+    billingDetails:{
+        email:String,
+        contactNumber:String,
+    },
+    timeZone:String
 
 });
 

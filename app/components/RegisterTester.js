@@ -23,7 +23,6 @@ class RegisterTester extends React.Component {
         this.setState(state)
     }
 
-
     handleSubmit(event){
         event.preventDefault();
         var username = this.state.username.trim();
@@ -35,42 +34,78 @@ class RegisterTester extends React.Component {
                 var tester={
                    username:this.state.username,
                    password:this.state.password,
+                    managerResponsibility:this.state.managerResponsibility,
                    firstName:this.state.firstName,
                    lastName:this.state.lastName,
                    avatarUrl:this.state.avatarUrl,
-                   confirmPassword:this.state.confirmPassword,
-                   emailId:this.state.emailId,
+                   email:this.state.emailId,
                    contactNumber:this.state.contactNumber,
                    alternateContactNumber:this.state.alternateContactNumber,
                    age:this.state.age,
                    designation:this.state.designation,
                    yearsOfExperience: this.state.yearsOfExperience,
-                   tools: this.state.skills.tools,
-                   programmingLanguages: this.state.skills.programmingLanguages,
-                   testingSkills: this.state.skills.testingSkills,
-                   bugReportingTools: this.state.skills.bugReportingTools,
-                   startDate: this.state.availability.startDate,
-                   endDate: this.state.availability.endDate,
-                   startTime: this.state.availability.startTime,
-                   endTime: this.state.availability.endTime,
-                   notAvailableStartDate: this.state.notAvailable.dateRange.startDate,
-                   notAvailableEndDate: this.state.notAvailable.dateRange.endDate,
-                   billingEmail: this.state.billingDetails.paypal.email,
-                   billingPhone: this.state.billingDetails.paypal.phoneNumber,
-                   timeZone:this.state.timeZone,
-                   platform:this.state.platform,
-                   testingType:this.state.testingType
+                    skills:{
+                        tools: this.state.tools,
+                        programmingLanguages: this.state.programmingLanguages,
+                        testingSkills: this.state.testingType,
+                        bugReportingTools: this.state.bugReportingTools,
+                        platforms:this.state.platforms
+                    },
+                    availability:{
+                        dates:{
+                            startDate:new Date(this.state.startDate),
+                            endDate:new Date(this.state.endDate)
+                        },
+                        time:{
+                            startTime:this.state.startTime,
+                            endTime:this.state.endTime
+                        }
+                    },
+                    notAvailability:{
+                        dates:{
+                            startDate:new Date(this.state.notAvailableStartDate),
+                            endDate:new Date(this.state.notAvailableEndDate)
+                        }
+                    },
+                    activeProjects:[],
+                    projects:[],
+                    creditPoints:0,
+                    billingDetails:{
+                        email:this.state.billingEmail,
+                        contactNumber:this.state.billingPhone
+                    },
+                    timeZone:this.state.timeZone
                 }
                 RegisterTesterAction.registerTester(tester);
             }else{
 
-                RegisterTesterAction.updateErrorMessage('RegisterTesterAction.updateErrorMessage');
+                RegisterTesterAction.updateErrorMessage('Passwords do not match.');
             }
         }else{
             RegisterTesterAction.updateErrorMessage('Username/password missing')
 
         }
     }
+
+   parseTime(timeString) {
+    if (timeString == '') return null;
+
+    var time = timeString.match(/(\d+)(:(\d\d))?\s*(p?)/i);
+    if (time == null) return null;
+
+    var hours = parseInt(time[1],10);
+    if (hours == 12 && !time[4]) {
+        hours = 0;
+    }
+    else {
+        hours += (hours < 12 && time[4])? 12 : 0;
+    }
+    var d = new Date();
+    d.setHours(hours);
+    d.setMinutes(parseInt(time[3],10) || 0);
+    d.setSeconds(0, 0);
+    return d;
+}
 
     showError(){
         if(this.state.isError){
@@ -194,7 +229,7 @@ class RegisterTester extends React.Component {
                                             </div>
                                             <div className="col-xs-6 form-group">
                                                 <label className="sr-only" for="form-userhomeaddr">home-address</label>
-                                                <input type="text" placeholder="Home Address..." className="form-control" id="form-contact" onChange={RegisterTesterAction.updateHomeAddress}/>
+                                                <input type="text" placeholder="Home Address..." value={this.state.homeAddress} className="form-control" id="form-contact"/>
                                             </div>
                                         </div>
                                     </div>
@@ -205,7 +240,7 @@ class RegisterTester extends React.Component {
                                             </div>
                                             <div className="col-xs-6 form-group">
                                                 <label className="sr-only" for="form-usermailingaddr">mailing-address</label>
-                                                <input type="text" placeholder="Mailing Address..." className="form-control" id="form-contact" onChange={RegisterTesterAction.updateMailingAddress}/>
+                                                <input type="text" placeholder="Mailing Address..." value={this.state.mailingAddress} className="form-control" id="form-contact"/>
                                             </div>
                                         </div>
                                     </div>
@@ -243,6 +278,19 @@ class RegisterTester extends React.Component {
                                         </div>
                                     </div>
                                     <div className="row">
+                                        <div className="form-group">
+                                            <div className="col-xs-3 col-xs-offset-1 form-group">
+                                                <p className="pull-right">Would you be willing to take a responsibility of a manager</p>
+                                            </div>
+                                            <div className="col-xs-6 form-group">
+                                                <select className="selectpicker" onChange={RegisterTesterAction.updateResponsibility}>
+                                                    <option>YES</option>
+                                                    <option>NO</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
                                         <div className="col-xs-3 col-xs-offset-1 form-group">
                                             <h4 className="pull-right"><strong>Specify Skills</strong></h4>
                                         </div>
@@ -253,7 +301,7 @@ class RegisterTester extends React.Component {
                                                 <p className="pull-right">Tools</p>
                                             </div>
                                             <div className="col-xs-6 form-group">
-                                                <select className="selectpicker" onChange={RegisterTesterAction.updateTools}>
+                                                <select className="selectpicker" multiple="multiple" onChange={RegisterTesterAction.updateTools}>
                                                     <option>Selendroid</option>
                                                     <option>Calaba.sh</option>
                                                     <option>Robotium</option>
@@ -268,7 +316,7 @@ class RegisterTester extends React.Component {
                                                 <p className="pull-right">Programming Languages</p>
                                             </div>
                                             <div className="col-xs-6 form-group">
-                                                <select className="selectpicker" onChange={RegisterTesterAction.updateProgrammingLanguages}>
+                                                <select className="selectpicker" multiple="multiple" onChange={RegisterTesterAction.updateProgrammingLanguages}>
                                                     <option>Java</option>
                                                     <option>JavaScript</option>
                                                     <option>Scala</option>
@@ -281,23 +329,10 @@ class RegisterTester extends React.Component {
                                     <div className="row">
                                         <div className="form-group">
                                             <div className="col-xs-3 col-xs-offset-1 form-group">
-                                                <p className="pull-right">Testing Skills</p>
-                                            </div>
-                                            <div className="col-xs-6 form-group">
-                                                <select className="selectpicker" onChange={RegisterTesterAction.updateTestingSkills}>
-                                                    <option>Functional</option>
-                                                    <option>Usability</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="form-group">
-                                            <div className="col-xs-3 col-xs-offset-1 form-group">
                                                 <p className="pull-right">Bug Reporting Tools</p>
                                             </div>
                                             <div className="col-xs-6 form-group">
-                                                <select className="selectpicker" onChange={RegisterTesterAction.updateBugReportingTools}>
+                                                <select className="selectpicker" multiple="multiple" onChange={RegisterTesterAction.updateBugReportingTools}>
                                                     <option>Bugzilla</option>
                                                     <option>Jira</option>
                                                 </select>
@@ -328,7 +363,7 @@ class RegisterTester extends React.Component {
                                                 <select className="selectpicker" multiple="multiple" onChange={RegisterTesterAction.updateTestingTypes}>
                                                     <option>Functional</option>
                                                     <option>Usability</option>
-                                                    <option>Behavioral</option>
+                                                    <option>UX</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -394,7 +429,7 @@ class RegisterTester extends React.Component {
                                             </div>
                                             <div className="col-xs-6 form-group">
                                                 <label className="sr-only" for="form-nastartdate">startdate</label>
-                                                <input type="text" placeholder="MM-dd-yyyy" className="form-control" id="form-nastartdate" onChange={RegisterTesterAction.updateNotAvailStartDate}/>
+                                                <input type="text" placeholder="MM-dd-yyyy" className="form-control" id="form-nastartdate" value={this.state.notAvailableStartDate}/>
                                             </div>
                                         </div>
                                     </div>
@@ -405,7 +440,7 @@ class RegisterTester extends React.Component {
                                             </div>
                                             <div className="col-xs-6 form-group">
                                                 <label className="sr-only" for="form-naendtdate">enddate</label>
-                                                <input type="text" placeholder="MM-dd-yyyy" className="form-control" id="form-naenddate" onChange={RegisterTesterAction.updateNotAvailEndDate}/>
+                                                <input type="text" placeholder="MM-dd-yyyy" className="form-control" id="form-naenddate" value={this.state.notAvailableEndDate}/>
                                             </div>
                                         </div>
                                     </div>

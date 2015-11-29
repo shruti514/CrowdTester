@@ -2,7 +2,11 @@ var React = require('react');
 var LoginStore = require('../stores/LoginStore');
 var LoginAction = require('../actions/LoginActions');
 var Home = require('./Home');
+var AppProviderDashboard = require('./AppProviderDashboard');
+var ManagerDashboard = require('./ManagerDashboard');
+var TesterDashboard = require('./TesterDashboard');
 var {Link} = require('react-router');
+var _=require('underscore');
 
 class Login extends React.Component {
 
@@ -37,7 +41,7 @@ class Login extends React.Component {
     }
 
     showError(){
-        if(this.state.isError){
+        if(this.state.errorMessage){
             return (
             <div className="alert alert-danger">
                 <strong>Failed!</strong> {this.state.errorMessage}
@@ -60,9 +64,22 @@ class Login extends React.Component {
     render() {
 
         if(this.state.isAuthenticated) {
-            return (
-                <Home {...this.props} user={this.state.user}/>
-            );
+            if(this.state.user){
+                var roles= this.state.user.roles;
+                if(_.contains(roles,'ROLE_TESTER')){
+                    return (
+                        <TesterDashboard {...this.props} user={this.state.user}/>
+                    );
+                }if(_.contains(roles,'ROLE_PROVIDER')){
+                    return (
+                        <AppProviderDashboard {...this.props} user={this.state.user}/>
+                    );
+                }if(_.contains(roles,'ROLE_MANAGER')){
+                    return (
+                        <ManagerDashboard {...this.props} user={this.state.user}/>
+                    );
+                }
+            }
         }
         else{
         return (

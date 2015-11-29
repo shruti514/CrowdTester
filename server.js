@@ -25,7 +25,7 @@ var AppProvider = require('./models/AppProvider');
 
 var app = express();
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -85,9 +85,16 @@ app.get('/getUser',function(req,res,next){
 
 app.post('/registerTester', function(req, res, next) {
     console.log('registering Tester');
+    var roles=[];
+
+    if(req.param('managerResponsibility')){
+        roles.push("ROLE_MANAGER")
+    }
+    roles.push("ROLE_TESTER");
+
     var user = new User({
         username: req.param('username'),
-        roles:["ROLE_TESTER"]
+        roles:roles
     });
 
     User.register(user, req.param('password'), function(err,user) {
