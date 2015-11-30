@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
@@ -8,7 +7,29 @@ var Project = new mongoose.Schema({
     providerName:String,
     projectManagerId:Number,
     projectName:String,
-    platforms:[String]
+    platforms:[String],
+    devices:[String],
+    browsers:[String],
+    testingTyp:[String],
+    numberOfTesters:Number,
+    baseHourlyRate:Number,
+     duration:{
+            dates:{
+                startDate:Date,
+                endDate:Date
+                }
+                },
+    testers:[String],
+     testers:[
+        {
+            testerId:Schema.Types.ObjectId,
+            testerName:String
+        },
+        {
+           testerId:Schema.Types.ObjectId,
+                       testerName:String
+        }]
+
 });
 
 Project.plugin(timestamps);
