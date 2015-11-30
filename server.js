@@ -20,7 +20,6 @@ var bugreports = require('./server/BugReport');
 var projects = require('./server/Project');
 
 var User = require('./models/user');
-var users = require('./server/Users');
 var Tester = require('./models/tester');
 var AppProvider = require('./models/AppProvider');
 //require("babel-core/register");
@@ -52,7 +51,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get('/userProfile',users.findCurrentUser);
 
 app.post('/testers',testers.save);
 app.get('/testers',testers.findAll);
