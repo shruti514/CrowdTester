@@ -57,9 +57,6 @@ app.get('/userProfile',users.findCurrentUser);
 app.post('/testers',testers.save);
 app.get('/testers',testers.findAll);
 
-/*app.post('/user',user.save);
-app.get('/user',user.findAll);*/
-
 app.post('/payments',payments.save);
 app.get('/payments',payments.findAll);
 
