@@ -17,6 +17,7 @@ var systemconfigs = require('./server/SystemConfig');
 var incentives = require('./server/Incentives');
 var appproviders = require('./server/AppProvider');
 var bugreports = require('./server/BugReport');
+var projects = require('./server/Project');
 
 var User = require('./models/user');
 var Tester = require('./models/tester');
@@ -62,6 +63,9 @@ app.get('/payments',payments.findAll);
 
 app.post('/systemConfigs',systemconfigs.save);
 app.get('/systemConfigs',systemconfigs.findAll);
+
+app.post('/projects',projects.save);
+app.get('/projects',projects.findAll);
 
 app.post('/incentives',incentives.save);
 app.get('/incentives',incentives.findAll);
