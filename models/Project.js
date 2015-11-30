@@ -10,7 +10,7 @@ var Project = new mongoose.Schema({
     platforms:[String],
     devices:[String],
     browsers:[String],
-    testingTyp:[String],
+    testingType:[String],
     numberOfTesters:Number,
     baseHourlyRate:Number,
      duration:{
@@ -19,7 +19,6 @@ var Project = new mongoose.Schema({
                 endDate:Date
                 }
                 },
-    testers:[String],
      testers:[
         {
             testerId:Schema.Types.ObjectId,
