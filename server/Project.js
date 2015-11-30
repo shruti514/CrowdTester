@@ -21,7 +21,6 @@ var save = (req,res,next) => {
     })
 
 }
-
 exports.findAll = findAll;
 exports.save = save;
 
