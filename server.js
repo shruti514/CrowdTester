@@ -19,6 +19,7 @@ var appproviders = require('./server/AppProvider');
 var bugreports = require('./server/BugReport');
 
 var User = require('./models/user');
+//Added user
 var users = require('./server/Users');
 var Tester = require('./models/tester');
 var AppProvider = require('./models/AppProvider');

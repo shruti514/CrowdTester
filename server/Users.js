@@ -6,7 +6,7 @@ var findCurrentUser = (req,res,next) =>{
         console.log("User"+JSON.stringify(req.user))
         res.send(req.user)
     }else{
-        console.log("Session Not Found");
+        console.log("Session Not Yet Found");
         res.status(401).send({message:"No session found.Please login or sign-up."})
     }
 }

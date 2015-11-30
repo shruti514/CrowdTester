@@ -129,7 +129,7 @@ class Profile extends React.Component {
                                                 <div className="col-md-3"></div>
                                             </div>
                                             <div className="row">
-                                                <div className="col-md-3 col-md-offset-3 text-left"><strong>Contact Number</strong></div>
+                                                <div className="col-md-3 col-md-offset-3 text-left"><strong>Phone Number</strong></div>
                                                 <div className="col-md-3 text-left">{this.state.contactNumber}</div>
                                                 <div className="col-md-3"></div>
                                             </div>
