@@ -1,0 +1,28 @@
+{
+  "providerId":"5656592eed6f9f981b12258c",
+  "providerName":"John",
+  "projectManagerId":"15",
+  "projectName":"Space Innovation",
+  "platforms":["Java","Python"],
+  "devices":["iPhone","iPad"],
+  "browsers":["Mozilla Firefox","Google Chrome"],
+  "testingTyp":["Functional Testing"],
+  "numberOfTesters":"3",
+  "baseHourlyRate":"10",
+  "duration":{
+    "dates":{
+      "startDate":"11/30/2015",
+      "endDate":"12/21/2015"
+    }
+  },
+  "testers":[
+    {
+      "testerId":"565623473b464e9c24f0c8db",
+      "testerName":"John"
+    },
+    {
+      "testerId":"565623473b464e9c24f0c8db",
+      "testerName":"Ryan"
+    }]
+
+}
