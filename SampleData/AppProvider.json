@@ -2,6 +2,7 @@
   "username": "John",
   "firstName":"Henry",
   "lastName":"Kennedy",
+  "password":"password",
   "address":{
     "street":"Santana Row",
     "unitNumber":"Eight",
@@ -17,7 +18,14 @@
   "yearsOfExperience":"13",
   "billingDetails":{
     "paypal":{"email":"john@umail.com","phoneNumber":"234-568-4521"}
-  }
-
-
+  },
+  "activeProjects":[
+    {
+      "projectId":"565c617c37aee6dfaace9428",
+      "projectName":"Music App"
+    }],
+  "projects":[{
+    "projectId":"565c617737aee6dfaace9427",
+    "projectName":"Old Music App"
+  }]
 }

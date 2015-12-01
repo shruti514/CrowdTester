@@ -2,6 +2,7 @@
     "username": "tester123",
     "firstName": "Bob",
     "lastName": "Baxter",
+    "password":"password",
     "avatarUrl": "https://www.hydrogenaud.io/forums/uploads/profile/photo-119400.jpg",
     "email": "bob.baxter@gmail.com",
     "isActive": true,
@@ -20,7 +21,8 @@
         ],
         "bugReportingTools": [
             "bugZilla"
-        ]
+        ],
+        "platforms":["Android","iOS","Windows"]
     },
     "availability": {
         "dates": {
@@ -31,5 +33,6 @@
             "startTime": "2012-07-14T01:00:00+01:00",
             "endTime": "2012-07-14T01:00:00+01:00"
         }
-    }
+    },
+    "creditPoints":240
 }

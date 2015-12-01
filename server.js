@@ -23,11 +23,12 @@ var User = require('./models/user');
 var users = require('./server/Users');
 var Tester = require('./models/tester');
 var AppProvider = require('./models/AppProvider');
+var _=require('underscore');
 //require("babel-core/register");
 
 var app = express();
 
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 3500);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -52,7 +53,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get('/userProfile',users.findCurrentUser);
+
 
 app.post('/testers',testers.save);
 app.get('/testers',testers.findAll);
@@ -72,13 +73,35 @@ app.get('/incentives',incentives.findAll);
 app.post('/appProviders',appproviders.save);
 app.get('/appProviders',appproviders.findAll);
 
+app.get('/appProvidersProfile',appproviders.findByUsername);
+
 app.post('/bugReports',bugreports.save);
 app.get('/bugReports',bugreports.findAll);
 
 
 app.get('/getUser',function(req,res,next){
     if(req.user){
-        res.status(200).send({user:req.user})
+        if(_.contains(req.user.roles,"ROLE_TESTER") || _.contains(req.user.roles,"ROLE_MANAGER")){
+            Tester.findOne({username:req.user.username},function(err,tester){
+                if(err){
+
+                    res.status(404).send({message:'User not forund'})
+                }else{
+                    console.log("Tester : "+JSON.stringify(tester))
+                    res.send({user:tester,role:req.user.roles[0]})
+                }
+            })
+        }
+        if(_.contains(req.user.roles,"ROLE_PROVIDER")){
+            AppProvider.findOne({username:req.user.username},function(err,provider){
+                if(err){
+                    res.status(404).send({message:'User not forund'})
+                }else{
+                    console.log("Provider : "+JSON.stringify(provider))
+                    res.send({user:provider,role:req.user.roles[0]})
+                }
+            })
+        }
     }else{
         res.status(401).send({message:'No Session Found'})
     }

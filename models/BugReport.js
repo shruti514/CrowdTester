@@ -1,5 +1,6 @@
 
 var mongoose = require('mongoose');
+var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
 var BugReport = new mongoose.Schema({
@@ -7,9 +8,9 @@ var BugReport = new mongoose.Schema({
     priority:String,
     severity:String,
     assignedTo:String,
-    //testerId: ObjectId,
-    //managerId: ObjectId,
-    //projectId: ObjectId,
+    testerId: Schema.ObjectId,
+    managerId: Schema.ObjectId,
+    projectId: Schema.ObjectId,
     environmentDetails:{
         platform:String,
         browser:String,

@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
+var Schema = require('mongoose').Schema
 
 var AppProvider = new mongoose.Schema({
     username: String,
     firstName:String,
     lastName:String,
+    email:String,
     address:{
     street:String,
     unitNumber:String,
@@ -21,13 +23,13 @@ var AppProvider = new mongoose.Schema({
     billingDetails:{
         paypal:{email:String,phoneNumber:String}
     },
-    /*activeProjects:[
+    activeProjects:[
     {
-        projectId:ObjectId,
+        projectId:Schema.ObjectId,
         projectName:String
-    }]
-    projects:[{projectId:ObjectId,
-                       projectName:String}]*/
+    }],
+    projects:[{projectId:Schema.ObjectId,
+                       projectName:String}]
 
 });
 

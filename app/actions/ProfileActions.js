@@ -14,7 +14,7 @@ class ProfileActions{
         console.log('Inside action getProfile');
         $.ajax({
                 type:'GET',
-                url:'/userProfile'
+                url:'/getUser'
             })
             .done((data)=>{
                 //alert('action success')

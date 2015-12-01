@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
 var Incentives = new mongoose.Schema({
@@ -7,9 +8,8 @@ var Incentives = new mongoose.Schema({
         level:Number,
         name:String,
         bonus:Number,
-        //testers:[ObjectId]
-    }],
-
+        testers:[Schema.ObjectId]
+    }]
 });
 
 Incentives.plugin(timestamps);

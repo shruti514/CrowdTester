@@ -129,14 +129,14 @@ class Login extends React.Component {
                                 <div className="col-sm-4 col-sm-offset-2 text">
                                     <p><strong>If you are an impeccable tester, show us your skills and get paid</strong></p>
                                     <div className="description">
-                                        <Link className="btn btn-primary" to={"/registerTester"}>Register</Link>
+                                        <Link className="btn btn-primary" to={`/registerTester`}>Register</Link>
 
                                     </div>
-                                </div>
+                                </div>`
                                 <div className="col-sm-4 text">
                                     <p><strong>Want to test your mobile application, register as an application provider and upload your App</strong></p>
                                     <div className="description">
-                                        <Link className="btn btn-primary" to={"/registerProvider"}>Register</Link>
+                                        <Link className="btn btn-primary" to={`/registerProvider`}>Register</Link>
                                     </div>
                                 </div>''
                             </div>

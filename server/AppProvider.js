@@ -20,8 +20,22 @@ var save = (req,res,next) => {
 
     })
 
-}
+};
+
+var findByUsername=(req,res,next)=>{
+    if(req.user){
+        ApplicationProvider.findOne({username:req.user.username},function(err,provider){
+            if(err){
+                res.status(500).send({message:'Error fetching provider with username'});
+            }
+            res.send(provider)
+        })
+    }else{
+        res.status(401).send({message:'No session found'});
+    }
+};
 
 exports.findAll = findAll;
 exports.save = save;
+exports.findByUsername = findByUsername;
 

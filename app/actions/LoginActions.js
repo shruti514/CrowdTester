@@ -27,7 +27,7 @@ class LoginActions{
             if(""==errorMessage){
                 errorMessage = "Please enter correct username and password.";
             }
-            alert(errorMessage)
+
             this.actions.loginFail(errorMessage)
         });
     }
