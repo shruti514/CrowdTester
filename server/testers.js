@@ -1,6 +1,5 @@
 var Tester = require('../models/tester');
 
-
 var findAll = (req,res,next) =>{
     Tester.find(function(err,testers){
         console.log("After get all call"+JSON.stringify(testers))
@@ -19,8 +18,10 @@ var save = (req,res,next) => {
         res.send({message: 'Tester saved'});
 
     })
-
 }
+
+
+
 
 exports.findAll = findAll;
 exports.save = save;

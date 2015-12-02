@@ -18,8 +18,6 @@ var BugReport = new mongoose.Schema({
         operatingSystem:String,
     },
     otherDetails:String
-
-
 });
 
 BugReport.plugin(timestamps);

@@ -4,6 +4,7 @@ var timestamps = require('mongoose-timestamp');
 
 var Project = new mongoose.Schema({
     providerId:Schema.Types.ObjectId,
+    projectID:Schema.ObjectId,
     providerName:String,
     projectManagerId:Number,
     projectName:String,

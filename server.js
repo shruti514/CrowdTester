@@ -17,6 +17,7 @@ var systemconfigs = require('./server/SystemConfig');
 var incentives = require('./server/Incentives');
 var appproviders = require('./server/AppProvider');
 var bugreports = require('./server/BugReport');
+var project = require('./server/Project');
 
 var User = require('./models/user');
 //Added user
@@ -34,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/assets',express.static(path.join(__dirname, '/assets')));
 
-mongoose.connect('mongodb://localhost/CMPE281',function(err){
+mongoose.connect('mongodb://localhost/mydb',function(err){
     console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
@@ -78,6 +79,8 @@ app.get('/appProvidersProfile',appproviders.findByUsername);
 app.post('/bugReports',bugreports.save);
 app.get('/bugReports',bugreports.findAll);
 
+app.post('/projects',project.save);
+app.get('/projects',project.findAll);
 
 app.get('/getUser',function(req,res,next){
     if(req.user){
