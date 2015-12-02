@@ -2,28 +2,28 @@ var React = require('react');
 var DropdownButton = require('react-bootstrap').DropdownButton;
 var MenuItem = require('react-bootstrap').MenuItem;
 var {Link} = require('react-router');
-var TesterActions = require('../actions/TesterDashboardAction');
-var TesterStore = require('../stores/TesterdashboardStore');
+//var TesterActions = require('../actions/TesterDashboardAction');
+//var TesterStore = require('../stores/TesterdashboardStore');
 
 
 class TesterDashboard extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = TesterStore.getState();
+       // this.state = TesterStore.getState();
         this.onChange = this.onChange.bind(this);
     }
 
     componentDidMount(){
 
-        TesterStore.listen(this.onChange);
-        TesterActions.getTesterDashBoardData();
-        TesterActions.getProjectData();
-        TesterActions.calculateCreditPoints();
+       // TesterStore.listen(this.onChange);
+        //TesterActions.getTesterDashBoardData();
+        //TesterActions.getProjectData();
+        //TesterActions.calculateCreditPoints();
     }
 
     componentWillUnmount() {
-        TesterStore.unlisten(this.onChange);
+        //TesterStore.unlisten(this.onChange);
     }
 
     onChange(state){
