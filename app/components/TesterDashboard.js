@@ -54,16 +54,20 @@ class TesterDashboard extends React.Component {
         });*/
 
         //<td>{this.state.testerData[j].environmentDetails.platform}</td>
+        console.log(this.state.projectData);
+        console.log(this.state.testerData);
         var rows = [];
         for(var i=0; i < this.state.projectData.length; i++)
         {
             for(var j=0; j < this.state.testerData.length; j++) {
+                console.log("Project ID" + i + ":" + this.state.projectData[i].projectID);
+                console.log("Tester ID" + i + ":" + this.state.testerData[j].projectId);
                 if (this.state.projectData[i].projectID == this.state.testerData[j].projectId) {
 
-                    console.log("match found!");
-                    rows.push((<tr>
-                        <td>{this.state.projectData[i].providerId}</td>
-                        <td>{this.state.projectData[i].providerName}</td>
+                        rows.push((<tr>
+                        <td>{this.state.testerData[j].projectID}</td>
+                        <td>{this.state.projectData[i].projectName}</td>
+                        <td>{this.state.testerData[j].environmentDetails.platform}</td>
                         <td>{this.state.testerData[j].testingType}</td>
                         <td>{this.state.testerData[j].severity}</td>
                     </tr>));
@@ -76,7 +80,6 @@ class TesterDashboard extends React.Component {
 
     render() {
         var dashBoardData = this.renderDashBoard();
-        this.calculateCreditPoints();
         return (
             <div id="wrapper">
 

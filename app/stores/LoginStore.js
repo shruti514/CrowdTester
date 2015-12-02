@@ -13,6 +13,7 @@ class LoginStore {
     }
 
     onLoginSuccess(user){
+        console.log('login success');
         this.isAuthenticated = true;
         this.errorMessage=null;
         this.user = user

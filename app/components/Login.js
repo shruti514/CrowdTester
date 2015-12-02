@@ -67,7 +67,7 @@ class Login extends React.Component {
             if(this.state.user){
                 var roles= this.state.user.roles;
                 if(_.contains(roles,'ROLE_TESTER')){
-                    //console.log('login');
+                    console.log('login');
                     return (
                         <TesterDashboard {...this.props} user={this.state.user}/>
                     );
