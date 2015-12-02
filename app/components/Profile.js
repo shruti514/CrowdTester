@@ -71,10 +71,10 @@ class Profile extends React.Component {
                 <div className="collapse navbar-collapse navbar-ex1-collapse">
                     <ul className="nav navbar-nav side-nav">
                         <li className="active">
-                            <a href="#"><i className="fa fa-fw fa-dashboard"></i>&nbsp;Dashboard</a>
+                            <Link to={'/managerDashboard'}><i className="fa fa-fw fa-dashboard"></i>&nbsp;Dashboard</Link>
                         </li>
                         <li className="active">
-                            <a href="#"><i className="fa fa-fw fa-bars"></i>&nbsp;Project Setup</a>
+                            <Link to={'/managerDashboard'}><i className="fa fa-fw fa-bars"></i>&nbsp;Project Setup</Link>
                         </li>
                     </ul>
                 </div> 

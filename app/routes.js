@@ -12,6 +12,8 @@ import ManagerDashboard from './components/ManagerDashboard';
 import TesterDashboard from './components/TesterDashboard';
 import ProviderBilling from './components/ProviderBilling';
 import ProviderAppUpload from './components/ProviderAppUpload';
+import TesterPayment from './components/TesterPayment';
+import ReportBug from './components/ReportBug';
 
 
 export default (
@@ -27,6 +29,8 @@ export default (
         <Route path='/managerDashboard' component={ManagerDashboard}/>
         <Route path='/providerBilling' component={ProviderBilling}/>
         <Route path='/uploadApp' component={ProviderAppUpload}/>
+        <Route path='/testerPayment' component={TesterPayment}/>
+        <Route path='/reportABug' component={ReportBug}/>
     </Route>
 
 );

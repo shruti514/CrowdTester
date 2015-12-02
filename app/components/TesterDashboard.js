@@ -1,85 +1,11 @@
-var React = require('react');
-var DropdownButton = require('react-bootstrap').DropdownButton;
-var MenuItem = require('react-bootstrap').MenuItem;
+var React = require('react')
+var DropdownButton = require('react-bootstrap').DropdownButton
+var MenuItem = require('react-bootstrap').MenuItem
 var {Link} = require('react-router');
-//var TesterActions = require('../actions/TesterDashboardAction');
-//var TesterStore = require('../stores/TesterdashboardStore');
 
 
 class TesterDashboard extends React.Component {
-
-    constructor(props){
-        super(props);
-       // this.state = TesterStore.getState();
-        this.onChange = this.onChange.bind(this);
-    }
-
-    componentDidMount(){
-
-       // TesterStore.listen(this.onChange);
-        //TesterActions.getTesterDashBoardData();
-        //TesterActions.getProjectData();
-        //TesterActions.calculateCreditPoints();
-    }
-
-    componentWillUnmount() {
-        //TesterStore.unlisten(this.onChange);
-    }
-
-    onChange(state){
-        console.log('onchange',state);
-        this.setState(state);
-    }
-
-    renderDashBoard(){
-
-
-        /*return this.state.projectData.map(function(projects,index){
-            return(
-                <tr>
-                    <td>{projects.environmentDetails.platform}</td>
-                    <td>{tester.testingType}</td>
-                    <td>{tester.severity}</td>
-                </tr>
-            );
-        });
-        return this.state.testerData.map(function(tester,index){
-            return(
-                <tr>
-                    <td>{tester.environmentDetails.platform}</td>
-                    <td>{tester.testingType}</td>
-                    <td>{tester.severity}</td>
-                </tr>
-            );
-        });*/
-
-        //<td>{this.state.testerData[j].environmentDetails.platform}</td>
-        console.log(this.state.projectData);
-        console.log(this.state.testerData);
-        var rows = [];
-        for(var i=0; i < this.state.projectData.length; i++)
-        {
-            for(var j=0; j < this.state.testerData.length; j++) {
-                console.log("Project ID" + i + ":" + this.state.projectData[i].projectID);
-                console.log("Tester ID" + i + ":" + this.state.testerData[j].projectId);
-                if (this.state.projectData[i].projectID == this.state.testerData[j].projectId) {
-
-                        rows.push((<tr>
-                        <td>{this.state.testerData[j].projectID}</td>
-                        <td>{this.state.projectData[i].projectName}</td>
-                        <td>{this.state.testerData[j].environmentDetails.platform}</td>
-                        <td>{this.state.testerData[j].testingType}</td>
-                        <td>{this.state.testerData[j].severity}</td>
-                    </tr>));
-                }
-            }
-        }
-        return rows;
-    }
-
-
     render() {
-        var dashBoardData = this.renderDashBoard();
         return (
             <div id="wrapper">
 
@@ -91,12 +17,12 @@ class TesterDashboard extends React.Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="tester_dashboard.html">Crowd Tester</a>
+                        <Link to={'/testerDashboard'} className="navbar-brand" >Crowd Tester</Link>
                     </div>
                     <ul className="nav navbar-right top-nav">
 
                         <li className="dropdown dropdown-toggle">
-                            <DropdownButton style={{background:'#1D1F1D'}} title={this.props.user.username} id="bg-vertical-dropdown-1">
+                            <DropdownButton style={{background:'#1D1F1D'}} title={this.props.user?this.props.user.username:"tester123"} id="bg-vertical-dropdown-1">
                                 <MenuItem eventKey="1"><Link to={'/profile'}> <i className="fa fa-fw fa-user"></i> Profile</Link></MenuItem>
                                 <li className="divider"></li>
                                 <MenuItem eventKey="2"><Link to={'/login'}><i className="fa fa-fw fa-power-off"></i> Log Out</Link></MenuItem>
@@ -107,13 +33,13 @@ class TesterDashboard extends React.Component {
                     <div className="collapse navbar-collapse navbar-ex1-collapse">
                         <ul className="nav navbar-nav side-nav">
                             <li className="active">
-                                <a href="tester_dashboard.html"><i className="fa fa-fw fa-dashboard"></i>&nbsp;Dashboard</a>
+                                <Link to={'/testerDashboard'}><i className="fa fa-fw fa-dashboard"></i>&nbsp;Dashboard</Link>
                             </li>
                             <li className="active">
-                                <a href="tester_payments.html"><i className="fa fa-money fa-fw"></i>&nbsp;Payments</a>
+                                <Link to={'/testerPayment'}><i className="fa fa-money fa-fw"></i>&nbsp;Payments</Link>
                             </li>
                             <li className="active">
-                                <a href="tester_report_bug.html"><i className="fa fa-fw fa-bars"></i>&nbsp;Report Bug</a>
+                                <Link to={'/reportABug'}><i className="fa fa-fw fa-bars"></i>&nbsp;Report Bug</Link>
                             </li>
                         </ul>
                     </div>
@@ -145,19 +71,69 @@ class TesterDashboard extends React.Component {
                                     <div className="panel-body">
                                         <div className="table-responsive">
                                             <table className="table table-bordered table-hover table-striped">
-
+                                                <thead>
                                                 <tr>
                                                     <th>Application ID</th>
                                                     <th>Application Name</th>
                                                     <th>Platform</th>
-                                                    <th>Testing Type</th>
-                                                    <th>Priority 1 Bugs</th>
-                                                    <th>Priority 2 Bugs</th>
-                                                    <th>Priority 3 Bugs</th>
+                                                    <th>Test Type</th>
+                                                    <th>Tested Hours</th>
+                                                    <th>Sev 1 Bugs</th>
+                                                    <th>Sev 2 Bugs</th>
+                                                    <th>Sev 3 Bugs</th>
                                                 </tr>
-
+                                                </thead>
                                                 <tbody>
-                                                {dashBoardData}
+                                                <tr>
+                                                    <td>100</td>
+                                                    <td>App 1</td>
+                                                    <td>Android</td>
+                                                    <td>Functional</td>
+                                                    <td>40</td>
+                                                    <td>1</td>
+                                                    <td>3</td>
+                                                    <td>5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>101</td>
+                                                    <td>App 2</td>
+                                                    <td>iOS</td>
+                                                    <td>Usability</td>
+                                                    <td>20</td>
+                                                    <td>0</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>100</td>
+                                                    <td>App 1</td>
+                                                    <td>iOS</td>
+                                                    <td>Usability</td>
+                                                    <td>30</td>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>102</td>
+                                                    <td>App 3</td>
+                                                    <td>Android</td>
+                                                    <td>Functional</td>
+                                                    <td>40</td>
+                                                    <td>1</td>
+                                                    <td>3</td>
+                                                    <td>5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>103</td>
+                                                    <td>App 4</td>
+                                                    <td>Android</td>
+                                                    <td>Functional</td>
+                                                    <td>40</td>
+                                                    <td>1</td>
+                                                    <td>3</td>
+                                                    <td>5</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -173,60 +149,60 @@ class TesterDashboard extends React.Component {
                                         </div>
                                     </div>
                                     <br></br>
-                                        <div className="row">
-                                            <div className="table-responsive col-xs-4">
-                                                <table className="table table-bordered table-hover table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Status</th>
-                                                        <th>Bugs Count</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>Raised</td>
-                                                        <td>38</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Approved</td>
-                                                        <td>20</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Requested Info</td>
-                                                        <td>18</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div className="table-responsive col-xs-4 col-xs-offset-2">
-                                                <table className="table table-bordered table-hover table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Tester</th>
-                                                        <th>Credit Points</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>Ross</td>
-                                                        <td>500</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Monica</td>
-                                                        <td>420</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Chandler</td>
-                                                        <td>400</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Phoebe</td>
-                                                        <td>360</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                    <div className="row">
+                                        <div className="table-responsive col-xs-4">
+                                            <table className="table table-bordered table-hover table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>Status</th>
+                                                    <th>Bugs Count</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Raised</td>
+                                                    <td>38</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Approved</td>
+                                                    <td>20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Requested Info</td>
+                                                    <td>18</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        <div className="table-responsive col-xs-4 col-xs-offset-2">
+                                            <table className="table table-bordered table-hover table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>Tester</th>
+                                                    <th>Credit Points</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Ross</td>
+                                                    <td>500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Monica</td>
+                                                    <td>420</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Chandler</td>
+                                                    <td>400</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phoebe</td>
+                                                    <td>360</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

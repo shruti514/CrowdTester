@@ -29,7 +29,7 @@ var _=require('underscore');
 
 var app = express();
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3500);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,7 +39,7 @@ mongoose.connect('mongodb://localhost/mydb',function(err){
     console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
-// Configure passport middleware
+// Configure passport migit ddleware
 app.use(require('express-session')({
     secret: 'keyboard cat',
     resave: false,
