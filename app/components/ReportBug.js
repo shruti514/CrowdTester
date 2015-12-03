@@ -25,7 +25,7 @@ class ReportBug extends React.Component {
 
                     <ul className="nav navbar-right top-nav">
                         <li className="dropdown dropdown-toggle">
-                            <DropdownButton style={{background:'#1D1F1D'}} title="tester123" id="bg-vertical-dropdown-1">
+                            <DropdownButton style={{background:'#1D1F1D'}} title="alice_baxtor" id="bg-vertical-dropdown-1">
                                 <MenuItem eventKey="1"><Link to={'/profile'}> <i className="fa fa-fw fa-user"></i> Profile</Link></MenuItem>
                                 <li className="divider"></li>
                                 <MenuItem eventKey="2"><Link to={'/login'}><i className="fa fa-fw fa-power-off"></i> Log Out</Link></MenuItem>
